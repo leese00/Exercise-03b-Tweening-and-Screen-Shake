@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://UI/Main_Menu.gd" type="Script" id=1]
 [ext_resource path="res://UI/UI.tres" type="Theme" id=2]
 [ext_resource path="res://Assets/LeagueGothic-Regular.ttf" type="DynamicFontData" id=3]
 [ext_resource path="res://Ball/Ball.tscn" type="PackedScene" id=4]
+[ext_resource path="res://UI/Boundary.gd" type="Script" id=5]
 
 [sub_resource type="DynamicFont" id=1]
 size = 65
@@ -51,12 +52,11 @@ margin_right = 100.0
 margin_bottom = 90.0
 text = "Quit"
 
-[node name="StaticBody2D" type="StaticBody2D" parent="."]
+[node name="Boundary" type="StaticBody2D" parent="."]
+script = ExtResource( 5 )
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
-position = Vector2( -1.16921, 2.23767 )
-scale = Vector2( 1.00071, 0.998188 )
-polygon = PoolVector2Array( 40, 8, 8, 8, 8, -200, 1216, -192, 1224, 904, -184, 904, -184, -200, 8, -200, 8, 16, 8, 792, 1024, 800, 1032, 8, 0, 8 )
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Boundary"]
+polygon = PoolVector2Array( 0, 0, 0, -128, 1152, -128, 1152, 896, -128, 896, -128, -128, 0, -128, 0, 800, 1024, 800, 1032, 0 )
 
 [node name="Ball" parent="." instance=ExtResource( 4 )]
 position = Vector2( 200, 200 )
